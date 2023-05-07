@@ -1,0 +1,13 @@
+flask
+flask_cors
+python-dotenv
+opencv-python
+requests
+Pillow
+tqdm
+pandas
+scipy
+imutils
+getmac
+schedule
+openvino

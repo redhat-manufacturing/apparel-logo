@@ -1,0 +1,15 @@
+application/temp_chunks
+application/logs
+application/streamer-old
+logs
+temp_chunks
+input
+output*
+process_video_folder.py
+application/.DS_Store
+
+.DS_Store
+**/*pycache*
+**/*.mp4
+**/*pythonsqlite.db
+**/*.lic

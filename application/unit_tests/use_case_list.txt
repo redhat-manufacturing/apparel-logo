@@ -1,0 +1,16 @@
+1. people detection happening but logo count is 0
+    case1: there is actually no logo in the video
+    case2: there is logo but object detection model has not detected the logo
+    case3: there is logo, object detection model has predicted logo, error in tracking logic
+
+2. people detection not happening
+    case1: there are actually no people in the video
+    case2: there are people but object detection model has not detected the people
+    case3: there are people, object detection model has predicted them, error in tracking logic
+
+3. people detection happening
+  case1: check (id - object) is unique, once id is assigned, tracker can't assign that id to other object
+
+4. logo detection happening
+  case1: logo must be associated with any person
+  case2: check (id - object) is unique, once id is assigned, tracker can't assign that id to other object

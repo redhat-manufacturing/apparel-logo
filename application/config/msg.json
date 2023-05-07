@@ -1,0 +1,77 @@
+{
+    "start_process" : {
+        "111" : "A stream is currently being processed",
+        "100" : "Processing stream",
+        "110" : "Error in processing"
+    },
+
+    "stream_status" : {
+        "101" : "No stream is being processed",
+        "102" : "A stream is being processed",
+        "103" : "A stream is stopped but processing is active",
+        "110" : "Error in processing"
+    },
+
+    "stop_process" : {
+        "111" : "No stream is being processed",
+        "100" : "Processing has stopped"
+    },
+
+    "stop_streaming" : {
+        "111" : "No stream is being processed",
+        "112" : "Stream is stopped but processing is active",
+        "101" : "Stream has stopped successfully  but processing will continue"
+    },
+
+    "activate_license" : {
+        "223" : "Please enter the auth token to proceed",
+        "224" : "Please enter the right auth token",
+        "220" : "License is successfully validated",
+        "221" : "Error in license activation, please check the license key",
+        "222" : "License has already been validated ",
+        "225" : "Please enter the activation key to activate license",
+        "226" : "Couldn't validate the License"
+    },
+
+    "update_env" : {
+        "100" : "Settings updated"
+    },
+
+    "get_frame" : {
+        "100" : "frame retrieved successfully",
+        "110" : "frame retrieved unsuccessfully",
+        "111" : "No stream is being processed. Please enter the camera source."
+    },
+
+    "data_fetch" : {
+        "100" : "Data retrieved",
+        "110" : "Unable to fetch data"
+    },
+
+    "set_roi" : {
+        "100" : "Region of Interest updated",
+        "110" : "Error in coordinates"
+    },
+
+    "dashboard_login" : {
+        "225" : "Login successful"
+    },
+
+    "dashboard_data" : {
+        "225" : "Data retrieved",
+        "226" : "Unable to retrieve dashboard data"
+    },
+
+    "insert_data" : {
+        "225" : "Inserted Data",
+        "226" : "Unable to insert data"
+    },
+    "save_logs":{
+        "225":"logs saved",
+        "226":"Unable to save logs"
+    },
+    "fetch_logs":{
+        "225":"Succuessfully fetched logs",
+        "226":"Unable to fetch logs"
+    }
+}

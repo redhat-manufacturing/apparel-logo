@@ -1,0 +1,35 @@
+FROM registry.access.redhat.com/ubi9/ubi
+
+LABEL name="Retail - Apparel Logo" \
+      vendor="Guise AI" \
+      version="1.0.0" \
+      release="1" \
+      summary="Apparel logo detection" \
+      description="Retail Edge with Apparel Logo Detection is a ML \
+application to provide insights on the customer behavior and \
+trends helping retailers improve demand forecasting."
+
+RUN yum update -y
+RUN yum install -y python3 python3-pip python3-devel g++
+
+RUN groupadd -r -g 1000 guise \
+  && useradd -r -u 1000 -g guise -m -s /bin/bash guise
+
+WORKDIR /home/guise
+COPY . /home/guise
+COPY application/licenses/ /licenses/
+
+ENV LD_LIBRARY_PATH=/home/guise/application/lib_rlm:$LD_LIBRARY_PATH
+
+RUN chown -R guise:guise /home/guise
+USER guise
+
+RUN pip install --upgrade pip setuptools urllib3==1.26.5
+RUN pip install install Cython
+RUN pip install install numpy
+RUN pip install install wheel
+RUN pip install lap
+RUN pip install -r requirements.txt
+RUN pip install opencv-python-headless
+EXPOSE 5041
+CMD ["python3","-u" ,"./run.py"]

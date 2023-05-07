@@ -1,0 +1,41 @@
+# # Production: container-compose.yml
+# services:
+#   ml_service:
+#     container_name: ml-service
+#     image: quay.io/guiseai_retail/apparel_logo_microservices:ml_service
+#     ports:
+#     - "5001:5001"
+#     volumes:
+#     - $PWD/ml_service:/app
+#     restart: always
+
+# Development: root
+services:
+  app_root:
+    container_name: apparel-logo-root-ui
+    build:
+      context: .
+      dockerfile: Containerfile.root 
+    image: quay.io/guiseai_retail/apparel-logo:ui-1.0.1
+    environment:
+    - PYTHONUNBUFFERED=1
+    ports:
+    - "9080:9080"
+    volumes:
+    - $PWD:/app
+    restart: always
+# localhost/apparel-logo-monolith_app_root
+# Development: rootless
+# services:
+#   app:
+#     container_name: apparel-logo
+#     build:
+#       context: .
+#       dockerfile: Containerfile.rootless
+#     ports:
+#     - "5041:5041"
+#     volumes:
+#     - $PWD/application:/home/guise/application
+#     restart: always
+
+
