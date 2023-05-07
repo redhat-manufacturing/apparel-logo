@@ -8,7 +8,6 @@ logs
 application/logs
 janvi.txt
 *pycache*
-*.pyc
 *.mp4
 .DS_Store
 application/.DS_Store

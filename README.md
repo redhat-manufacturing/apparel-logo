@@ -8,56 +8,49 @@
 
 ## 1. Run Quay Image
 
-- No need to clone github repo
-- Make sure for every new pull, change the name of volume
+No need to clone github repo
 
 ```sh
  $ podman login quay.io
- $ podman volume create <podman-storage-name>
- $ podman pull quay.io/guiseai_retail/apparel-logo:ob_1.0.1_ovino
+ $ podman volume create apparel-logo-dash-storage
+ $ podman pull quay.io/guiseai_retail/apparel-logo:dashboard
  $ podman run --name apparel-logo-container \
   -p 9080:9080 \
-  -v <podman-storage-name>:/app/ \
-  -d quay.io/guiseai_retail/apparel-logo:ob_1.0.1_ovino
+  -v apparel-logo-dash-storage:/app/ \
+  -d quay.io/guiseai_retail/apparel-logo:dashboard
 ```
 
 ## 2. Build image locally and run it using podman commands
 
-- clone the repo
+clone the repo
 ```sh
  $ git clone https://github.com/GuiseAI/apparel-logo-monolith.git
+ $ git checkout dashboard
  $ cd apparel_logo_monolith
- $ git checkout <branch_name>
 ```
-
-- Make sure for every new build, change the name of volume
 
 1. build the image and create storage
 ```sh
- $ podman build -t <apparel-logo-image-name> -f Containerfile.root
- $ podman volume create <podman-storage-name>
+ $ podman build -t apparel-logo-dashboard -f Containerfile.root
+ $ podman volume create apparel-logo-dash-storage
 ```
-
-- Remove -d from command if you want to print logs on terminal
 
 2. run the image
 ```sh
- podman run --name <apparel-logo-container-name> \
+ podman run --name apparel-logo-container \
   -p 9080:9080 \
-  -v <podman-storage-name>:/app/ \
-  -d <apparel-logo-image-name>
+  -v apparel-logo-dash-storage:/app/ \
+  -d apparel-logo-dashboard
 ```
 
 ## 3. Build and run the image using podman-compose:
 
-- clone the repo
+clone the repo
 ```sh
  $ git clone https://github.com/GuiseAI/apparel-logo-monolith.git
+ $ git checkout dashboard
  $ cd apparel_logo_monolith
- $ git checkout <branch-name>
 ```
-
-- Inside contaner-compose.yml file, change image and container_name as per your choice.
 
 To start
 ```sh
@@ -67,5 +60,25 @@ To start
 To stop
 ```sh
  podman-compose down
+```
+
+## Running Unit tests
+
+Replace the session id in 'unit_tests.py' with current session id
+```
+python3 unit_test.py
+```
+
+Replace the session id in 'unit_tests.py' with current session id
+```
+cd ml_service/application/unit_tests
+python3 unit_test.py
+```
+
+For Streamer 
+```
+cd ml_service/application/unit_tests
+python3 test_chunker.py
+python3 test_reader.py
 ```
 
